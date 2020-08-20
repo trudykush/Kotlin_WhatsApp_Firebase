@@ -1,4 +1,4 @@
-package com.kush.learningkotlin
+package com.kush.learningkotlin.mainAppFiles
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.kush.learningkotlin.R
 
 class MainKotlinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +19,7 @@ class MainKotlinActivity : AppCompatActivity() {
 
         // Write
         var employee = Employee("Kush", "CEO", "Malibu", 29)
-        databaseReference.setValue(employee)
+        //databaseReference.setValue(employee)
 
 //        databaseReference.setValue("Hello Kush!")
 
