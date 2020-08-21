@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context="whtsAppClone.MainWhtsappActivity">
+    tools:context="whtsAppClone.activities.MainWhtsappActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:background="#00B8D4"
+        android:onClick="goToLoginPage"
         android:text="Login"
         android:textAlignment="center"
         android:textColor="@color/grey_100"
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="#00B8D4"
+        android:onClick="goToRegisterPage"
         android:text="Register"
         android:textAlignment="center"
         android:textColor="@color/grey_100"
