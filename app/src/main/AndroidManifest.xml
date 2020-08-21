@@ -9,19 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".mainAppFiles.ui.login.LoginActivity"
-            android:label="@string/title_activity_login">
+        <activity android:name="whtsAppClone.Chat_Login"/>
+        <activity android:name="whtsAppClone.MainWhtsappActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mainAppFiles.MainKotlinActivity">
-        </activity>
-        <activity android:name=".ListView"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".learningRandomStuff.data.mainAppFiles.ui.login.LoginActivity"/>
+        <activity android:name=".learningRandomStuff.data.mainAppFiles.MainKotlinActivity"/>
+        <activity android:name=".learningRandomStuff.data.ListView" />
+        <activity android:name=".learningRandomStuff.data.MainActivity" />
     </application>
 
 </manifest>
