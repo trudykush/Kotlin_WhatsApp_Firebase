@@ -38,8 +38,8 @@ class CreateAccount : AppCompatActivity() {
                     var userDetails = HashMap<String, String>()
                     userDetails["DisplayName"] = displayName
                     userDetails["Status"] = "Hello from Kush"
-                    userDetails["Image"] = "default"
-                    userDetails["Thumb_Image"] = "default"
+                    userDetails["image"] = "default"
+                    userDetails["thumb_image"] = "default"
 
                     mDatabase = FirebaseDatabase.getInstance().reference
                         .child("Users").child(userId)

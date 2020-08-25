@@ -11,7 +11,9 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.kush.learningkotlin.R
+import kotlinx.android.synthetic.main.activity_chat__login.*
 import kotlinx.android.synthetic.main.activity_create_account.*
+import kotlinx.android.synthetic.main.activity_login.*
 
 class Chat_Login : AppCompatActivity() {
 
@@ -24,15 +26,15 @@ class Chat_Login : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-    }
+        userLoginBtn.setOnClickListener {
+            var email = userEmailLoginET.text.toString().trim()
+            var password = userPasswordLoginET.text.toString().trim()
 
-    fun userLogin(view: View) {
-        var email = userEmailRegister.text.toString().trim()
-        var password = userPasswordRegister.text.toString().trim()
-
-        if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
-            loginUser(email, password)
+            if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
+                loginUser(email, password)
+            }
         }
+
     }
 
     private fun loginUser(email: String, passowrd: String) {

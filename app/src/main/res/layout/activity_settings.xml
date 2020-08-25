@@ -4,6 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkBg"
     tools:context="whtsAppClone.activities.SettingsActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/settingProfileID"
+        android:layout_width="189dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/default_avata"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/settingsDisplayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Display Name"
+        android:textAlignment="center"
+        android:textColor="@color/colorCardView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingProfileID" />
+
+    <TextView
+        android:id="@+id/settingStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Status"
+        android:textColor="@color/colorCardView"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsDisplayName" />
+
+    <Button
+        android:id="@+id/settingChangeImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/bt_shape"
+        android:padding="20dp"
+        android:stateListAnimator="@drawable/state_list_animator_z"
+        android:text="Change Picture"
+        android:textColor="@color/colorCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingStatus" />
+
+    <Button
+        android:id="@+id/settingsChangeStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/bt_shape"
+        android:padding="20dp"
+        android:stateListAnimator="@drawable/state_list_animator_z"
+        android:text="Change Status"
+        android:textColor="@color/colorCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingChangeImgBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
