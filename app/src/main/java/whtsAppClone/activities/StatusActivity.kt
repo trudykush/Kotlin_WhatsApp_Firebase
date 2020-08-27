@@ -39,13 +39,13 @@ class StatusActivity : AppCompatActivity() {
         updateStatus.setOnClickListener{
 
             mCurrentUser = FirebaseAuth.getInstance().currentUser
-            var userID = mCurrentUser!!.uid
+            val userID = mCurrentUser!!.uid
 
             mDatabase = FirebaseDatabase.getInstance().reference
                 .child("Users")
                 .child(userID)
 
-            var status = newStatusET.text.toString().trim()
+            val status = newStatusET.text.toString().trim()
 
             mDatabase!!.child("Status")
                 .setValue(status).addOnCompleteListener{

@@ -56,7 +56,10 @@ class SettingsActivity : AppCompatActivity() {
                 settingsDisplayName.text = displayName.toString()
 
                 if (image!! != "default") {
-                    Picasso.get().load(image).placeholder(R.drawable.profile_img).into(settingProfileID)
+                    Picasso.get()
+                        .load(image)
+                        .placeholder(R.drawable.profile_img)
+                        .into(settingProfileID)
                 }
             }
 
@@ -124,26 +127,26 @@ class SettingsActivity : AppCompatActivity() {
 
                         var uploadTask: UploadTask = thumFilePath.putBytes(thumByteArray)
 
-                        uploadTask.addOnCompleteListener { taskSnapshot ->
+                        uploadTask.addOnCompleteListener{
+                            taskSnapshot ->
                             var url = taskSnapshot.result.toString()
 
-                            if (taskSnapshot.isSuccessful) {
+                            if (uri.isSuccessful) {
                                 var updateObj = HashMap<String, Any>()
-                                updateObj.put("image", downUri)
-                                updateObj.put("thumb_image", url)
+                                updateObj["image"] = downUri
+                                updateObj["thumb_image"] = url
 
                                 mDatabase!!.updateChildren(updateObj)
                                     .addOnCompleteListener{
-                                        task: Task<Void> ->
+                                            task: Task<Void> ->
                                         if (task.isSuccessful) {
                                             Toast.makeText(this, "Profile Image Saved",
-                                                        Toast.LENGTH_LONG).show()
+                                                Toast.LENGTH_LONG).show()
                                         } else {
 
                                         }
                                     }
                             }
-
                         }
                     }
                 }

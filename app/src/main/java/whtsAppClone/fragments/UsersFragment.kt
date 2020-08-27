@@ -1,6 +1,9 @@
 package whtsAppClone.fragments
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +29,8 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_list_view.*
 import kotlinx.android.synthetic.main.fragment_users.*
 import kotlinx.android.synthetic.main.users_row.view.*
+import whtsAppClone.activities.ChatActivity
+import whtsAppClone.activities.ProfileActivities
 import whtsAppClone.models.Users
 
 
@@ -96,6 +103,37 @@ class UsersFragment : Fragment() {
                 }
                 override fun onBindViewHolder(holder: MyViewHolder, position: Int, model: Users) {
                     holder.bindView(context, model)
+
+                    var userId = getRef(position).key
+                    holder.itemView.setOnClickListener {
+                        Toast.makeText(context,"User Clicked was ${model.DisplayName}", Toast.LENGTH_SHORT).show()
+
+                        var optionsDialog = arrayOf("Open Profile", "Send Message")
+                        var builder = AlertDialog.Builder(context)
+                        builder.setTitle("Select Options")
+                        builder.setItems(optionsDialog, DialogInterface.OnClickListener { dialogInterface, i ->
+                            var userNameSelected = holder.itemView.userName.text.toString()
+                            var userStatus = holder.itemView.userStatus.text.toString()
+                            var profilePicasso = holder.itemView.usersProfile
+
+                            if (i == 0) {
+                                // Open user profile
+                                var profileIntent = Intent(context, ProfileActivities::class.java)
+                                profileIntent.putExtra("UserID", userId)
+                                context?.startActivity(profileIntent)
+                            } else {
+                                // Send Message -> Take them to chat activity
+                                var userIntent = Intent(context, ChatActivity::class.java)
+                                userIntent.putExtra("UserID", userId)
+                                userIntent.putExtra("UserName", userNameSelected)
+                                userIntent.putExtra("UserStatus", userStatus)
+                                userIntent.putExtra("ProfilePic", profilePicasso.toString())
+                                context?.startActivity(userIntent)
+                            }
+                        })
+
+                        builder.show()
+                    }
                 }
 
             override fun onDataChanged() {
@@ -131,10 +169,11 @@ class UsersFragment : Fragment() {
     }
 
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener  {
 
         //        fun bindView(databaseReference: DatabaseReference?, context: Context?, model: Users) {
         fun bindView(context: Context?, model: Users?) {
+            var cardView: CardView = itemView.userChatCardView
             var userProfilePic: CircleImageView = itemView.usersProfile
             var userName: TextView = itemView.userName
             var userStatus: TextView = itemView.userStatus
@@ -148,6 +187,11 @@ class UsersFragment : Fragment() {
                     .placeholder(R.drawable.profile_img)
                     .into(userProfilePic)
             }
+
+        }
+
+        override fun onClick(view: View?) {
+            val item_Id = view?.id
 
         }
     }
